@@ -137,7 +137,7 @@ public abstract class AbstractTree<K> implements Tree<K> {
     }
 
     /**
-     * Returns Iterable collection containing Positions in tree reported in breadth-first order (traverse each node frmo left to right).
+     * Returns Iterable collection containing Positions in tree reported in breadth-first order (traverse each node from left to right).
      * 
      * @return Iterable object of type Position of generic type K
      */

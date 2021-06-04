@@ -16,48 +16,27 @@ public class PartA_Driver {
         LinkedBinaryTree<String> decisionTree = buildMorseCodeDecodingTree();
         System.out.println(decisionTree.toString()); // print out tree
 
-        // Position<String> node = decisionTree.root(); // start at root
-        // Scanner scan = null;
-        // try {
-        //     int guess = 0, celebrated = 0; // contains working guess, if user has celebrated birthday yet
-        //     String answer = "";
+        Position<String> node = decisionTree.root(); // start at root
+        Scanner scan = new Scanner(System.in);
+        try {
+            System.out.println("What shall I convert into morsey for you today? :D\n\ta. Word\n\tb. Phrase\n\tc. File");
+            String entry = scan.nextLine(); // a, b, or c
+            if(!entry.equalsIgnoreCase("c")) {
+                System.out.println("Please enter the word or phrase to convert into morsey :)");
+                entry = scan.nextLine(); // the word/phrase
 
-        //     System.out.println(node.getElement());
-        //     scan = new Scanner(System.in);
-        //     String input = "";
+                for(Character c : entry.toCharArray()) {
+                    //search through tree for the letter (BFS or DFS, shouldnt really matter tho probably I think)
+                    //once letter found, retrace route back to route (left=dah, right=dit)
+                    //reverse should be conversion...
+                }
+            }
 
-        //     do {
-        //         input = scan.nextLine(); // get input from user
-
-        //         // parse through inputs
-        //         if(input.equalsIgnoreCase("yes")) {
-        //             node = decisionTree.left(node); // yes = left
-        //         } else if(input.equalsIgnoreCase("no")) {
-        //             node = decisionTree.right(node); // no = right
-        //         } else if(Character.isDigit(input.charAt(0))) { // separate so the rest of the tree functionality can work with any other tree
-        //             if(node.getElement().contains("Pick")) { // if at "Pick a number..." node
-        //                 guess = guessAlgoPickStage(node, Integer.parseInt(input));
-        //             } else if(node.getElement().contains("celebrated")) { // if at "if you have celebrated your..." node
-        //                 celebrated = Integer.parseInt(input);
-        //             } else if(node.getElement().contains("YOB")) { // if at "what is your year..." node
-        //                 input = guessAlgoYOBStage(node, Integer.parseInt(input), guess, celebrated);
-        //                 answer = "The number you chose is " + input.charAt(0) + " and your age is " + input.substring(1, 3); // prepare final answer
-        //                 decisionTree.set(decisionTree.left(node), answer); // update next node
-        //             }
-
-        //             node = decisionTree.left(node); // every node that takes in a number does not have a sibling and are a left child
-        //         } else {
-        //             throw new IllegalArgumentException("Input may only be yes, no, or a number.");
-        //         }
-
-        //         System.out.println(node.getElement()); // print new node's value
-
-        //     } while(!decisionTree.isExternal(node));
-        // } finally {
-        //     if(scan != null) {
-        //         scan.close();
-        //     }
-        // }
+        } finally {
+            if(scan != null) {
+                scan.close();
+            }
+        }
     }
 
     /**
@@ -107,222 +86,6 @@ public class PartA_Driver {
         decisionTree.addRight(pickup, "H"); // gen 4: root-R-R-R-R (....)
 
         return decisionTree;
-    }
-
-    /**
-     * Below lies the magic... if you are eager to understand it, for not all take advantage, you must journey past your mind and your planet. 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     *
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     *
-     * 
-     * 
-     * Are you sure?
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     *
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     *
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * You cannot handle...
-     *
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     *
-     * 
-     * 
-     * Oh, cmon...
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     *
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     *
-     */
-
-    /**
-     * First part of the algorithm to guess the user's age. This is implemented for the stage where the user chooses their number. Returns the updated number.
-     * 
-     * @param num integer value
-     * @return integer value
-     */
-    public static int guessAlgoPickStage(Position<String> node, int saveNum) {
-        saveNum *= 2;
-        saveNum += 5;
-        saveNum *= 50;
-
-        return saveNum;
-    }
-
-    /**
-     * Second part of the algorithm to guess the user's age. This is implemented for the stage where the user provides their YOB. Returns a String of the final guess.
-     * 
-     * @param node Position object of type String 
-     * @param celebrated integer value
-     * @param saveNum integer value
-     * @param yob integer value
-     * @return
-     */
-    public static String guessAlgoYOBStage(Position<String> node, int yob, int saveNum, int celebrated) {
-        if(celebrated % 2 == 0)  { // if celebrated birthday already
-            saveNum += 1771;
-            saveNum -= yob;
-        } else { // if not
-            saveNum += 1770;
-            saveNum -= yob;
-        }
-
-        return String.valueOf(saveNum);
     }
 
 }
