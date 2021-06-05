@@ -30,7 +30,7 @@ public class PartA_Driver {
                 for(Character c : entry.toCharArray()) {
                     for(Position<Character> k : findMe) {
                         if(c == k.getElement()) {
-                            conversion.add(convertLRtoDD(traceRoutetoRoot(k)));
+                            conversion.add(traceRoutetoRoot(k));
                         }
                     }
                 }
@@ -44,27 +44,18 @@ public class PartA_Driver {
     }
 
     /**
-     * Converts the array of Characters containing the letter's route to root 
-     * into dit's and dah's.
+     * Traces the route between the letter to root. Route consists of Ls and Rs.
      * 
      * Left = dah (-)
      * Right = dit (.)
      * 
-     * @param foundYou Character array containing route.
-     * @return ArrayList of Characters containing dits and dahs that represent the letter.
-     */
-    public static ArrayList<Character> convertLRtoDD(Character[] foundYou) {
-
-    }
-
-    /**
-     * Traces the route between the letter to the route.
-     * 
      * @param foundYou The position of the letter in the tree.
-     * @return Array of Characters containing the Ls and Rs.
+     * @return Array of Characters containing containing dits and dahs that represent the letter.
      */
-    public static Character[] traceRoutetoRoot(Position<Character> foundYou) {
-
+    public static ArrayList<Character> traceRoutetoRoot(Position<Character> foundYou) {
+        // check if pos is L or R of parent
+        // if L, add dah, else add dit
+        // keep going until root is reached == ' '
     }
 
     /**
