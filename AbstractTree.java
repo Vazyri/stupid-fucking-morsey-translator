@@ -161,7 +161,7 @@ public abstract class AbstractTree<K> implements Tree<K> {
         return snappity;
     }
 
-// ************************************************** Traversal **************************************************
+// ************************************************** End of Traversal **************************************************
     
     /**
      * Returns boolean value based on whether the Node located at the provided Position object is an internal Node (atleast one child).
