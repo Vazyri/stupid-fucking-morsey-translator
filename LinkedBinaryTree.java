@@ -205,6 +205,42 @@ public class LinkedBinaryTree<K> extends AbstractBinaryTree<K> {
     }
 
     /**
+     * Checks if the provided Position is the Left child of its parent.
+     * If so, returns its parent's position. If not, returns null.
+     * 
+     * @param p The Position of the node in question.
+     * @return The Position of the node's parent or null.
+     * @throws IllegalArgumentException
+     */
+    public Position<K> isLeft(Position<K> p) throws IllegalArgumentException {
+        Node<K> node = validate(p);
+        
+        if(node.getParent().getLeft() == node) {
+            return node.getParent();
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * Checks if the provided Position is the Right child of its parent.
+     * If so, returns its parent's position. If not, returns null.
+     * 
+     * @param p The Position of the node in question.
+     * @return The Position of the node's parent or null.
+     * @throws IllegalArgumentException
+     */
+    public Position<K> isRight(Position<K> p) throws IllegalArgumentException {
+        Node<K> node = validate(p);
+        
+        if(node.getParent().getRight() == node) {
+            return node.getParent();
+        } else {
+            return null;
+        }
+    }
+
+    /**
      * Returns number of Node objects in tree.
      * 
      * Originates from Tree interface and is defined in LinkedBinaryTree.
