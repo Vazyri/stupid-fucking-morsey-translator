@@ -214,8 +214,8 @@ public class LinkedBinaryTree<K> extends AbstractBinaryTree<K> {
      */
     public Position<K> isLeft(Position<K> p) throws IllegalArgumentException {
         Node<K> node = validate(p);
-        
-        if(node.getParent().getLeft() == node) {
+
+        if(node.getParent().getLeft().getElement() == node.getElement()) {
             return node.getParent();
         } else {
             return null;
@@ -233,7 +233,7 @@ public class LinkedBinaryTree<K> extends AbstractBinaryTree<K> {
     public Position<K> isRight(Position<K> p) throws IllegalArgumentException {
         Node<K> node = validate(p);
         
-        if(node.getParent().getRight() == node) {
+        if(node.getParent().getRight().getElement() == node.getElement()) {
             return node.getParent();
         } else {
             return null;
@@ -377,7 +377,7 @@ public class LinkedBinaryTree<K> extends AbstractBinaryTree<K> {
     public String toString() {
         StringBuilder tabs = new StringBuilder(), print = new StringBuilder();
         Iterable<Position<K>> data = positions();
-
+        
         for(Position<K> v : data) {
             for(int i = 0; i<depth(v); i++) { // tabs to add
                 tabs.append("\t");
